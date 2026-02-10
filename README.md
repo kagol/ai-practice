@@ -10,3 +10,13 @@
 pnpm i
 pnpm dev
 ```
+
+## 使用效果
+
+Ollama deepseek-r1:7b 流式输出
+
+![ollama-deepseek-r1-7b](./ollama-deepseek-r1-7b.gif)
+
+DeepSeek deepseek-chat 流式输出
+
+![deepseek-chat](./deepseek-chat.gif)
