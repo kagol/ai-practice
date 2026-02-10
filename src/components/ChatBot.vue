@@ -37,7 +37,7 @@ import { ref, nextTick, watch } from 'vue'
 import { useOllama } from '@/composables/useOllama'
 import { useDeepSeek } from '@/composables/useDeepSeek'
 
-const { messages, isLoading, error, chatStream, clearHistory } = useOllama() // useDeepSeek()
+const { messages, isLoading, error, chatStream, clearHistory } = useOllama() // useOllama() // useDeepSeek()
 const inputMessage = ref('')
 const messageContainer = ref(null)
 
