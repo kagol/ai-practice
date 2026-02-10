@@ -1,5 +1,4 @@
 import { ref } from 'vue'
-import ollama from 'ollama' // 如不用 SDK，可删除此行
 
 export function useOllama() {
   const messages = ref([])
@@ -9,35 +8,6 @@ export function useOllama() {
   // 配置（可根据需要改为 props 或环境变量）
   const OLLAMA_BASE_URL = 'http://localhost:11434'
   const MODEL = 'deepseek-r1:7b' // 'llama3.1' // 或 'qwen2.5:7b' 等你已下载的模型
-
-  // 非流式调用（简单问答）
-  const chat = async (userMessage) => {
-    isLoading.value = true
-    error.value = null
-    
-    // 添加用户消息到历史
-    messages.value.push({ role: 'user', content: userMessage })
-    
-    try {
-      // 方案 A：使用 ollama-js SDK
-      const response = await ollama.chat({
-        model: MODEL,
-        messages: messages.value,
-        stream: false
-      })
-      
-      const assistantMessage = response.message.content
-      messages.value.push({ role: 'assistant', content: assistantMessage })
-      
-      return assistantMessage
-      
-    } catch (err) {
-      error.value = err.message
-      console.error('Ollama 调用失败:', err)
-    } finally {
-      isLoading.value = false
-    }
-  }
 
   // 流式调用（打字机效果，推荐）
   const chatStream = async (userMessage, onChunk) => {
@@ -107,7 +77,6 @@ export function useOllama() {
     messages,
     isLoading,
     error,
-    chat,
     chatStream,
     clearHistory
   }
