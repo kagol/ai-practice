@@ -25,7 +25,7 @@ export function useDeepSeek() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": "Bearer sk-3d85b98733e84db38133073e4b4d8b1d"
+          "Authorization": `Bearer ${import.meta.env.VITE_DEEPSEEK_API_KEY}`
         },
         body: JSON.stringify({
           "model": MODEL,
